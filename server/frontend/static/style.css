@@ -110,9 +110,9 @@ img{
 }
 
 .small_header{
-  font: 30px sans-serif;
+  font: 20px sans-serif;
   color:black;
-  margin: .5cm;
+  font-weight: bold;
 }
 
 .img_icon {
@@ -123,4 +123,8 @@ img{
     border-radius:50px;
     text-align:center;
     box-shadow: 2px 2px 3px #999;  
+}
+
+.url {
+    text-decoration: underline;
 }
