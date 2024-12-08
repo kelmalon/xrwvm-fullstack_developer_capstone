@@ -37,6 +37,7 @@ img{
   background-color: rgb(97, 64, 128);
   color: white;
   text-align: center;
+  word-wrap: normal;
   margin:20px;
   padding:5px;
 }
@@ -127,4 +128,8 @@ img{
 
 .url {
     text-decoration: underline;
+}
+
+p {
+    text-align: center;
 }
