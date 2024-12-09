@@ -72,10 +72,17 @@ def registration(request):
         user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name,password=password, email=email)
         #Login the user & redirect to list page
         login(request, user)
-        data = {"username": username}
+        data = {
+            "ok": True,
+            "username": username,
+        }
         return JsonResponse(data)
     else:
-        data = {"username": username, "error": "Already Registered"}
+        data = {
+            "ok": False,
+            "username": username, 
+            "error": "Already Registered"
+        }
         return JsonResponse(data)
 
 # # Update the `get_dealerships` view to render the index page with

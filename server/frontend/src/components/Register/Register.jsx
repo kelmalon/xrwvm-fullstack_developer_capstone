@@ -37,16 +37,17 @@ const Register = () => {
                 "firstName": firstName,
                 "lastName": lastName,
                 "email": email,
+                "status": 200,
                // "X-CSRFToken": csrftoken
             }),
         });
 
         const json = await res.json();
-        if (json.status) {
+        console.log(json.ok);
+        if (json.ok) {
             console.log("Entered if statement");
             sessionStorage.setItem('username', json.userName);
             window.location.href = window.location.origin;
-            window.location.reload();
             console.log("Redirecting...");
         } else if (json.error === "Already Registered") {
             alert("The user with same username is already registered");
