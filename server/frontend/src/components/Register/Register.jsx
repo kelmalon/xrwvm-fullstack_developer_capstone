@@ -24,12 +24,13 @@ const Register = () => {
 
         let register_url = window.location.origin + "/djangoapp/register";
 
-        //const csrftoken = Cookies.get('csrftoken');
+        const csrftoken = Cookies.get('csrftoken');
 
         const res = await fetch(register_url, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "X-CSRFToken": csrftoken
             },
             body: JSON.stringify({
                 "userName": userName,
@@ -38,7 +39,6 @@ const Register = () => {
                 "lastName": lastName,
                 "email": email,
                 "status": 200,
-               // "X-CSRFToken": csrftoken
             }),
         });
 
@@ -48,7 +48,7 @@ const Register = () => {
             console.log("Entered if statement");
             sessionStorage.setItem('username', json.userName);
             window.location.href = window.location.origin;
-            console.log("Redirecting...");
+            console.log(json.userName);
         } else if (json.error === "Already Registered") {
             alert("The user with same username is already registered");
             window.location.href = window.location.origin;

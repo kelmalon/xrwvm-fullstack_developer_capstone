@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import "./Login.css";
 import Header from '../Header/Header';
+import Cookies from "js-cookie";
+
 
 const Login = ({ onClose }) => {
 
@@ -10,14 +12,20 @@ const Login = ({ onClose }) => {
   const [open,setOpen] = useState(true)
 
   let login_url = window.location.origin+"/djangoapp/login";
+  
+  const csrftoken = Cookies.get('csrftoken');
+
 
   const login = async (e) => {
     e.preventDefault();
+
+    console.log(csrftoken);
 
     const res = await fetch(login_url, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
+            'X-CSRFToken': csrftoken
         },
         body: JSON.stringify({
             "userName": userName,
