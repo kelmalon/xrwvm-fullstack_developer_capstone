@@ -9,8 +9,8 @@ const Dealers = () => {
   // let [state, setState] = useState("")
   let [states, setStates] = useState([])
 
-  // let root_url = window.location.origin
-  let dealer_url ="/djangoapp/get_dealers";
+  //let root_url = window.location.origin
+  let dealer_url = "/djangoapp/get_dealers";
   
   let dealer_url_by_state = "/djangoapp/get_dealers/";
  
@@ -27,20 +27,37 @@ const Dealers = () => {
   }
 
   const get_dealers = async ()=>{
-    const res = await fetch(dealer_url, {
-      method: "GET"
-    });
-    const retobj = await res.json();
-    if(retobj.status === 200) {
-      let all_dealers = Array.from(retobj.dealers)
-      let states = [];
-      all_dealers.forEach((dealer)=>{
-        states.push(dealer.state)
-      });
+    try {
+        const res = await fetch(dealer_url, {
+          method: "GET"
+        });
+    
+        const retobj = await res.json();
 
-      setStates(Array.from(new Set(states)))
-      setDealersList(all_dealers)
+        //console.log(retobj.dealers);
+    
+        if (retobj.status === 200 && Array.isArray(retobj.dealers)) {
+          // Ensure retobj.dealers is an array
+          let all_dealers = Array.from(retobj.dealers);
+    
+          // Extract states from the dealers
+          let states = all_dealers.map(dealer => dealer.state);
+    
+          // Update states and dealers list
+          setStates(Array.from(new Set(states))); // Unique states
+          setDealersList(all_dealers);
+        } else {
+          // Handle unexpected or missing dealers
+          console.error("Invalid response format or dealers is not an array");
+          setStates([]);
+          setDealersList([]);
+        }
+    } catch (error) {
+        console.error("Error fetching dealers:", error);
+        setStates([]);
+        setDealersList([]);
     }
+    
   }
   useEffect(() => {
     get_dealers();

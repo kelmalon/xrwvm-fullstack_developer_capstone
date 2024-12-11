@@ -104,9 +104,9 @@ def get_cars(request):
 # a list of dealerships
 def get_dealerships(request, state="All"):
     if (state == "All"):
-        endpoint = "/get_dealers"
+        endpoint = "/fetchDealers"
     else:
-        endpoint = "/get_dealers/" + state
+        endpoint = "/fetchDealers/" + state
 
     dealerships = get_request(endpoint)
 
@@ -117,12 +117,13 @@ def get_dealer_reviews(request,dealer_id):
     if (dealer_id):
         endpoint = "/fetchReviews/dealer/" + str(dealer_id)
         reviews = get_request(endpoint)
+        #console.log(reviews)
+        print(reviews)
 
-        for review_detail in reviews:
-            response = analyze_review_sentiments(review_detail['review'])
-            print(response)
-            review_detail['sentiment'] = response['sentiment']
-            
+        for review in reviews:
+            response = analyze_review_sentiments(review['review'])
+            #console.log(response)
+            review["sentiment"] = response["sentiment"]            
         return JsonResponse({"status":200,"reviews":reviews})
     else:
         return JsonResponse({"status":400,"message":"Bad Request"})
