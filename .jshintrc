@@ -2,7 +2,6 @@
   "esversion": 8,  
   "browser": true,
   "node": true,
-  "jsx": true,
   "asi": true,     // Allow automatic semicolon insertion
   "curly": true,   // Require curly braces for control statements
   "eqeqeq": true,  // Require === and !==

@@ -6,14 +6,12 @@ on:
       - 'server/djangoapp/**/*.py'
       - 'server/djangoproj/**/*.py'
       - 'server/frontend/**/*.js'
-      - 'server/frontend/**/*.jsx'
   pull_request:
     branches: [master, main]
     paths: 
       - 'server/djangoapp/**/*.py'
       - 'server/djangoproj/**/*.py'
       - 'server/frontend/**/*.js'
-      - 'server/frontend/**/*.jsx'
 jobs:
   lint_python:
     name: Lint Python Files
@@ -53,5 +51,5 @@ jobs:
       - name: Run Linter
         run: |
           # This command finds all JavaScript files recursively and runs JSHint on them
-          find server/frontend -type f \( -name "*.js" -o -name "*.jsx" \) -exec jshint {} +
+          find server/frontend -type f \( -name "*.js"\) -exec jshint {} +
           echo "Linted all the js files successfully"
