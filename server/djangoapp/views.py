@@ -15,7 +15,7 @@ from .restapis import get_request, analyze_review_sentiments, post_review
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
-
+# added comment to check linting workflow action
 # Create your views here.
 
 # Create a `login_request` view to handle sign in request
