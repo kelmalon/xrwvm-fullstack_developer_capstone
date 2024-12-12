@@ -18,6 +18,7 @@ logger = logging.getLogger(__name__)
 # added comment to check linting workflow action
 # Create your views here.
 
+
 # Create a `login_request` view to handle sign in request
 # @csrf_exempt
 def login_user(request):
@@ -154,6 +155,9 @@ def add_review(request):
             return JsonResponse({"status": 200, "response": response})
         except Exception as err:
             print(f"Unexpected {err=}, {type(err)=}")
-            return JsonResponse({"status": 401, "message": "Error in posting review"})
+            return JsonResponse({
+                "status": 401,
+                "message": "Error in posting review"
+            })
     else:
         return JsonResponse({"status": 403, "message": "Unauthorized"})
