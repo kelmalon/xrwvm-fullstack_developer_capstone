@@ -14,7 +14,7 @@ class CarMake(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_last = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self): (
+    def __str__(self): 
         return (
             f"{self.name} ("
             f"Country: {self.country}, "
@@ -88,3 +88,4 @@ class CarModel(models.Model):
 # - Year (IntegerField) with min value 2015 and max value 2023
 # - Any other fields you would like to include in car model
 # - __str__ method to print a car make object
+
