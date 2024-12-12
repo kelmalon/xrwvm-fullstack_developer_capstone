@@ -10,6 +10,7 @@ import Header from '../Header/Header';
 
 const Dealer = () => {
     //comment added
+    //comment added 2
 
   const [dealer, setDealer] = useState({});
   const [reviews, setReviews] = useState([]);
