@@ -12,6 +12,7 @@ const Dealer = () => {
     //comment added
     //comment added 2
     //comment added 3
+    //comment added 4
 
   const [dealer, setDealer] = useState({});
   const [reviews, setReviews] = useState([]);
