@@ -2,8 +2,18 @@ name: 'Lint Code'
 on:
   push:
     branches: [master, main]
+    paths: 
+      - 'server/djangoapp/*/*.py'
+      - 'server/djangoproj/*/*.py'
+      - 'server/frontend/*/*.js'
+      - 'server/frontend/*/*.jsx'
   pull_request:
     branches: [master, main]
+    paths: 
+      - 'server/djangoapp/*/*.py'
+      - 'server/djangoproj/*/*.py'
+      - 'server/frontend/*/*.js'
+      - 'server/frontend/*/*.jsx'
 jobs:
   lint_python:
     name: Lint Python Files
