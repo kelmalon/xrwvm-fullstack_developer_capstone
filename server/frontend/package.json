@@ -20,6 +20,9 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 6  
+    },
     "extends": [
       "react-app",
       "react-app/jest"
