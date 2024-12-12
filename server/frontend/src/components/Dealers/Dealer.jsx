@@ -9,7 +9,7 @@ import review_icon from "../assets/reviewbutton.png"
 import Header from '../Header/Header';
 
 const Dealer = () => {
-
+    //comment added
 
   const [dealer, setDealer] = useState({});
   const [reviews, setReviews] = useState([]);
