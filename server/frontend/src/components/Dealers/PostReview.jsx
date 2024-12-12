@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import "./Dealers.css";
 import "../assets/style.css";
 import Header from '../Header/Header';
+import Cookies from "js-cookie";
+
 
 
 const PostReview = () => {
@@ -23,6 +25,8 @@ const PostReview = () => {
 
   const postreview = async ()=>{
     let name = sessionStorage.getItem("firstname")+" "+sessionStorage.getItem("lastname");
+    const csrftoken = Cookies.get('csrftoken');
+
     //If the first and second name are stores as null, use the username
     if(name.includes("null")) {
       name = sessionStorage.getItem("username");
@@ -52,6 +56,7 @@ const PostReview = () => {
       method: "POST",
       headers: {
           "Content-Type": "application/json",
+          "X-CSRFToken": csrftoken
       },
       body: jsoninput,
   });
@@ -94,7 +99,7 @@ const PostReview = () => {
     <div>
       <Header/>
       <div  style={{margin:"5%"}}>
-      <h1 style={{color:"darkblue"}}>{dealer.full_name}</h1>
+      <h1 style={{color:"darkturquoise"}}>{dealer.full_name}</h1>
       <textarea id='review' cols='50' rows='7' onChange={(e) => setReview(e.target.value)}></textarea>
       <div className='input_field'>
       Purchase Date <input type="date" onChange={(e) => setDate(e.target.value)}/>
