@@ -29,10 +29,10 @@ class CarModel(models.Model):
     TYPE_CHOICES = {
         ('Hatchback', 'Hatchback'),
         ('Sedan', 'Sedan'),
-        ('SUV', 'SUV'), 
+        ('SUV', 'SUV'),
         ('Station Wagon', 'Station Wagon'),
         ('Van', 'Van')
-    } 
+    }
 
     ENGINE_CHOICES = {
         ('Gasoline', 'Gasoline'),
@@ -66,7 +66,7 @@ class CarModel(models.Model):
             f"DealerID: {self.dealer_id},"
             f"VehicleType: {self.vehicle_type},"
             f"ModelYear: {self.model_year},"
-            f"EngineType: {self.engine_type}," 
+            f"EngineType: {self.engine_type},"
             f"CreatedAt: {self.created_at},"
             f"UpdatedLast: {self.updated_last})"
         )
