@@ -209,7 +209,7 @@ def initiate():
         }
         # Add more CarModel instances as needed
     ]
-    
+
     car_model_instances = []
 
     for data in car_model_data:
