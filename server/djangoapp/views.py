@@ -11,6 +11,7 @@ from .models import CarMake, CarModel
 
 from .populate import initiate
 from .restapis import get_request, analyze_review_sentiments, post_review
+from django.views.decorators.csrf import csrf_exempt
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
@@ -20,7 +21,7 @@ logger = logging.getLogger(__name__)
 
 
 # Create a `login_request` view to handle sign in request
-# @csrf_exempt
+@csrf_exempt
 def login_user(request):
     # Get username and password from request.POST dictionary
     data = json.loads(request.body)
@@ -146,6 +147,7 @@ def get_dealer_details(request, dealer_id):
 
 
 # Create a `add_review` view to submit a review
+@csrf_exempt
 def add_review(request):
     print(request.user.is_anonymous)
     if (request.user.is_anonymous is False):
