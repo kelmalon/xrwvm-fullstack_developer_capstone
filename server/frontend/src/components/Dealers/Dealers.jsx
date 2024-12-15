@@ -13,9 +13,16 @@ const Dealers = () => {
   let dealer_url = "/djangoapp/get_dealers";
   
   let dealer_url_by_state = "/djangoapp/get_dealers/";
+
+  function capitalizeFirstLetter(str) {
+    if (!str) return ""; // Handle empty or undefined strings
+    return str.charAt(0).toUpperCase() + str.slice(1); // Capitalize the first letter and append the rest of the string
+  }
  
   const filterDealers = async (state) => {
-    dealer_url_by_state = dealer_url_by_state+state;
+    const stateCap = capitalizeFirstLetter(state); // Convert search term to lowercase
+
+    dealer_url_by_state = dealer_url_by_state+stateCap;
     const res = await fetch(dealer_url_by_state, {
       method: "GET"
     });
@@ -77,13 +84,13 @@ return(
       <th>Address</th>
       <th>Zip</th>
       <th>
-      <select name="state" id="state" onChange={(e) => filterDealers(e.target.value)}>
-      <option value="" selected disabled hidden>State</option>
-      <option value="All">All States</option>
+      <input name="state" id="state" type="text" placeholder="Enter a state..." onChange={(e) => filterDealers(e.target.value)}>
+        {/*<option value="" selected disabled hidden>State</option>
+        <option value="All">All States</option>
       {states.map(state => (
           <option value={state}>{state}</option>
-      ))}
-      </select>        
+      ))}*/} 
+      </input>       
 
       </th>
       {isLoggedIn ? (
